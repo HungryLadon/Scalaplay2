@@ -1,0 +1,25 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET         /                       controllers.Application.index
+
+GET         /name                   controllers.Application.hello(name: String)
+
+GET         /listCDs                controllers.Application.listCDs
+
+POST        /listCDs                controllers.Application.createCD
+
+GET         /cd/:id                 controllers.Application.getCDbyId(id:Int)
+
+GET         /edit/:cdid             controllers.Application.edit(cdid:Int)
+POST        /editcd/:id             controllers.Application.editCD(id:Int)
+
+GET         /delete/:id             controllers.Application.delete(id:Int)
+
+GET         /deleteCD/:delid        controllers.Application.deleteCD(delid:Int)
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file           controllers.Assets.at(path="/public", file)
+
+    

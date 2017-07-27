@@ -1,0 +1,26 @@
+@(cds: Seq[CD], cdID: Int)(implicit messages: Messages)
+
+
+@main("CDs") {
+
+
+    <h1>CDs</h1>
+    <table>
+        <thead>
+            <tr><th>ID</th><th>Name</th><th>Price</th></tr>
+        </thead>
+        <tbody>
+        @for(cd <- cds) {
+            @if(cds.indexOf(cd)+1==cdID){
+
+            <tr><td>@(cds.indexOf(cd) + 1)</td>
+                <td>@cd.name</td>
+                <td>@cd.price</td>
+            </tr>
+            }
+        }
+        </tbody>
+    </table>
+
+    <hr/>
+}

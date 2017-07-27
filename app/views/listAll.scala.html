@@ -1,0 +1,33 @@
+@(cds: Seq[CD], form: Form[CD])(implicit messages: Messages)
+
+
+@main("CDs") {
+
+
+    <h1>CDs</h1>
+    <table>
+        <thead>
+            <tr><th>ID</th><th>Name</th><th>Price</th>
+        </thead>
+        <tbody>
+        @for(cd <- cds) {
+            <tr>
+                <td>@(cds.indexOf(cd)+1)</td>
+                <td>@cd.name</td>
+                <td>@cd.price</td>
+                <td><a href="/edit/@(cds.indexOf(cd))">edit</a></td>
+                <td><a href="/delete/@(cds.indexOf(cd))">delete</a></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <hr/>
+
+    @helper.form(routes.Application.createCD()) {
+
+        @helper.inputText(form("name"), '_label -> "Name", '_showConstraints -> false)
+        @helper.inputText(form("price"), '_label -> "Price" , '_showConstraints -> false)
+        <button type="submit">Create CD</button>
+    }
+}
